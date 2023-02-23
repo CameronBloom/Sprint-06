@@ -22,6 +22,7 @@ const yellow = "https://i.pinimg.com/originals/92/94/ba/9294badee7b8f3d93fa9bc6c
 function App() {
 
   const [lightOn, setLightOn] = useState(false);
+  const [lightCounter, setLightCounter] = useState(0);
   const [userName, setUserName] = useState(names[Math.floor(Math.random() * 10)]);
   const [userAge, setUserAge] = useState(18);
 
@@ -30,8 +31,11 @@ function App() {
       <div className="App">
       {/* <img src={white} alt="white" /> */}
       <img src={yellow} alt="on" />
-      <p>The light is {lightOn ? "on!" : "off..."}</p>
-      <button onClick={() => setLightOn(false)}>Light Switch</button>
+      <p>The light is {lightOn ? "on!" : "off..."} It's been switched {lightCounter} times.</p>
+      <button onClick={() => {
+        setLightOn(false);
+        setLightCounter(lightCounter + 1);
+      }}>Light Switch</button>
       <br />
       <div>
         <h2>{userName}</h2>
@@ -42,7 +46,8 @@ function App() {
         <h3>{userAge}</h3>
         <button onClick={() => { 
           setUserAge(userAge + 1);
-        }}>Add a Year</button>        
+        }}>Add a Year</button>
+        <span>    </span>  
         <button onClick={() => { 
           setUserAge(userAge - 1);
         }}>Subtract a Year</button>
@@ -55,8 +60,11 @@ function App() {
     <div className="App">
       <img src={white} alt="off" />
       {/* <img src={yellow} alt="yellow" /> */}
-      <p>The light is {lightOn ? "on!" : "off..."}</p>
-      <button onClick={() => setLightOn(true)}>Light Switch</button>
+      <p>The light is {lightOn ? "on!" : "off..."} It's been switched {lightCounter} times.</p>
+      <button onClick={() => {
+        setLightOn(true);
+        setLightCounter(lightCounter + 1);
+      }}>Light Switch</button>
       <br />
       <div>
         <h2>{userName}</h2>
